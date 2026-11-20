@@ -1,82 +1,53 @@
-<h1 align="center">Hi, I'm Charles Ameyaw 👋</h1>
+# Charles Ameyaw
 
-<p align="center">
-  Founder & Full-Stack Developer building Africa-first software from Accra, Ghana 🇬🇭
-</p>
+**Full-stack developer · TypeScript, Next.js, PostgreSQL · Accra, Ghana**
 
-<p align="center">
-  <a href="https://chay-soft.com"><img src="https://img.shields.io/badge/website-chay--soft.com-000000?style=for-the-badge" alt="Website"/></a>
-  <img src="https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white" alt="Next.js"/>
-  <img src="https://img.shields.io/badge/typescript-3178C6?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript"/>
-  <img src="https://img.shields.io/badge/supabase-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white" alt="Supabase"/>
-</p>
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-charles--ameyaw-0A66C2?style=flat-square&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/charles-ameyaw-9a0469363)
+[![Portfolio](https://img.shields.io/badge/Portfolio-dev.ameyawcharles.com-000000?style=flat-square)](https://dev.ameyawcharles.com)
+[![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org)
+[![Next.js](https://img.shields.io/badge/Next.js-000000?style=flat-square&logo=nextdotjs&logoColor=white)](https://nextjs.org)
+[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=flat-square&logo=postgresql&logoColor=white)](https://www.postgresql.org)
+[![Supabase](https://img.shields.io/badge/Supabase-3ECF8E?style=flat-square&logo=supabase&logoColor=white)](https://supabase.com)
 
----
+### 👋 About
 
-### 🌍 About Me
+I'm a full-stack developer who builds web applications where correctness matters: checkout, inventory, payments and multi-tenant platforms. I work mainly in TypeScript, Next.js and PostgreSQL, on Supabase.
 
-I'm a software engineer and founder based in Accra, coding since 2019 and holding a BSc in Business Information Technology. I'm the founder of **ChaySoft**, an African Enterprise Technology Company building SaaS platforms, enterprise systems, AI solutions, and digital infrastructure for businesses across Africa.
+My engineering philosophy centers on first-principles thinking: build systems that stay correct under concurrent load, enforce strict data consistency, and fail safely. Whether I'm designing a stock ledger that cannot oversell, an idempotent checkout, or tenant isolation with row-level security, my focus is reliability I can prove with tests, not just claim.
 
-I care about software that fits how Africa actually works: mobile-money native, offline-first, and built for real network conditions — not adapted from a Western template.
+**Core stack**
+- **Languages & frameworks:** TypeScript, JavaScript, React, Next.js, SQL (PL/pgSQL)
+- **Data:** PostgreSQL, Supabase (row-level security)
+- **Infrastructure & workflow:** Vercel, GitHub Actions CI, REST APIs, written design decisions (ADRs)
+- **Payments & messaging:** Paystack, Moolre, Resend, Africa's Talking
 
-- 🛠️ Currently building products under **ChaySoft**: PharmaPOS, GuestIQ, ObiBot, Refera, LaunchDrop, AgentMap GH, Gbeka, and AfroLinguo
-- 📚 BSc in Business Information Technology, Palm University College — capstone project was an e-commerce platform for rice farmers in Asutsuare, Ghana
-- 🌱 Long-term vision: a tech training hub and innovation centre in Ghana
-- 🤝 Runs free SME business clinics in the community
-- ✝️ Faith-driven — A staunch Believer
-- 🎯 Transitioning to full-time founder in January 2027
+I work well in asynchronous, remote-first settings: I write decisions down, keep changes small and reviewed, and let tests decide what ships.
 
-<br/>
+📬 **Let's connect:** open to remote full-stack and backend opportunities. Find me on [LinkedIn](https://www.linkedin.com/in/charles-ameyaw-9a0469363).
 
-### 🧰 Tech I Work With
+**Top skills:** Full-Stack Development • PostgreSQL • TypeScript • Next.js • Database Design
 
-**Languages & Frameworks**
-![Next.js](https://img.shields.io/badge/Next.js-000000?style=flat-square&logo=nextdotjs&logoColor=white)
-![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)
-![React](https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=react&logoColor=black)
+### 📌 Start here: [pharmacy-stock-ledger](https://github.com/ameyawcharles/pharmacy-stock-ledger)
 
-**Infrastructure & Data**
-![Supabase](https://img.shields.io/badge/Supabase-3ECF8E?style=flat-square&logo=supabase&logoColor=white)
-![Vercel](https://img.shields.io/badge/Vercel-000000?style=flat-square&logo=vercel&logoColor=white)
+[![ci](https://github.com/ameyawcharles/pharmacy-stock-ledger/actions/workflows/ci.yml/badge.svg)](https://github.com/ameyawcharles/pharmacy-stock-ledger/actions/workflows/ci.yml)
 
-**Payments & Messaging**
-![Paystack](https://img.shields.io/badge/Paystack-00C3F7?style=flat-square&logo=paystack&logoColor=white)
-![Resend](https://img.shields.io/badge/Resend-000000?style=flat-square)
-Africa's Talking (SMS/telco)
+A PostgreSQL stock ledger for pharmacies, extracted from a point-of-sale system I'm building.
 
-**Tools**
-Cursor + Claude as my primary coding environment · `.cursorrules` / `.mdc` files, `CLAUDE.md`, and `DECISIONS.md` on every project
+- **It cannot oversell.** Rows are locked in a fixed order, so 300 concurrent sales against 100 units sell exactly 100.
+- **A retry never double-charges.** Checkout takes an idempotency key; a replay returns the original sale.
+- **Expiry is enforced, not displayed.** Sales draw from the batch expiring soonest, and expired batches are never sold.
+- **History cannot be rewritten.** The ledger is immutable, and `verify_stock_integrity()` proves the numbers add up.
+- **It's reviewable.** 84 checks run against a real PostgreSQL on every push, design decisions are written up as ADRs, and `main` is protected: every change goes through a pull request with a passing check.
 
-<br/>
+### 🚀 Projects
 
-### 🏗️ How I Build
+| Project | What it is | Where it stands |
+| --- | --- | --- |
+| [**pharmacy-stock-ledger**](https://github.com/ameyawcharles/pharmacy-stock-ledger) | PostgreSQL stock ledger for pharmacies | Public, with CI |
+| [**LaunchDrop**](https://launchdropp.com) | Marketplace for ready-made, SEO-optimized websites | Deployed. Paystack and Moolre payments, Resend email, Supabase row-level-security multi-tenancy, admin approval flow for listings |
+| **PharmaPOS** | Point-of-sale and stock control for pharmacies in Ghana | Prototype. Stock ledger, batches and atomic checkout are built and tested; payments and offline selling are next |
+| **ObiBot** | WhatsApp-first AI business advisor for Ghanaian SMEs | In development. Africa's Talking, Claude API and Supabase |
 
-Every ChaySoft product shares a common foundation:
+### 📫 Contact
 
-- `tenant_id` row-level security (RLS) for multi-tenancy
-- GHS currency stored as pesewas (integers), never floats
-- Paystack webhooks verified with HMAC SHA512 + idempotency keys
-- Architecture decisions run through a 5-lens framework: Architect, Critic, Growth, CFO, Skeptic-Market
-
-<br/>
-
-### 📌 Featured Products
-
-| Product | What it does |
-|---|---|
-| **PharmaPOS** | Ghana-specific point-of-sale for pharmacies |
-| **GuestIQ** | Cloud-native PMS for small Ghanaian hospitality properties |
-| **ObiBot** | WhatsApp-first AI business advisor for Ghanaian SMEs |
-| **Refera** | SaaS affiliate marketplace for Africa |
-| **LaunchDrop** | Marketplace for ready-made, SEO-optimized websites |
-
-<br/>
-
-### 📫 Get in Touch
-
-<p align="left">
-  <a href="https://chay-soft.com"><img src="https://img.shields.io/badge/Website-chay--soft.com-black?style=flat-square"/></a>
-  <a href="https://dashboard.chay-soft.com"><img src="https://img.shields.io/badge/Dashboard-dashboard.chay--soft.com-black?style=flat-square"/></a>
-</p>
-
-<p align="center"><em>"I can do all things through Christ who strengthens me." — Philippians 4:13</em></p>
+Message me on [LinkedIn](https://www.linkedin.com/in/charles-ameyaw-9a0469363).
